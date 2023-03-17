@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { CenterMiddle } from '@/components/layout'
+import { Center, CenterMiddle, Column, Filler, Middle, Row } from '@/components/layout'
 import { QuizzForm } from '@/components/QuizzForm'
 import { fillStyle } from '@/styles/styles'
 
