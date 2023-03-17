@@ -6,9 +6,8 @@ export default function Document() {
   return (
     <Html lang="en" style={fillStyle}>
       <Head />
-      <body style={{...fillStyle, margin: "0px"}}>
-        <Home />
-        {/* <Main /> */}
+      <body>
+        <Main />
         <NextScript />
       </body>
     </Html>

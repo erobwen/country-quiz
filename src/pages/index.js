@@ -2,23 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { fillStyle } from '@/styles/styles'
 import { CenterMiddle } from '@/components/layout'
 import { QuizzForm } from '@/components/QuizzForm'
-import { useState } from 'react'
+import { fillStyle } from '@/styles/styles'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [foo, setFoo] = useState(null);
-  if (foo) {
-    console.log("Return got it!")
-    return "GOT IT!";
-  }
-  setTimeout(() => {
-    setFoo("Got it now!");
-  }, 1000);
-
   return (
     <QuizzBackground>
       <CenterMiddle>
