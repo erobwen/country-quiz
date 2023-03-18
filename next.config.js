@@ -5,7 +5,8 @@ const nextConfig = {
     return [
       {
         source: '/countries',
-        destination: 'https://api.first.org/data/v1/countries' // Proxy to Backend v2/all
+        destination: 'https://restcountries.com/v3.1/all' // Proxy to Backend v2/all
+        // destination: 'https://api.first.org/data/v1/countries' // Proxy to Backend v2/all
         // source: '/api/:path*',
         // destination: 'https://restcountries.eu/:path*' // Proxy to Backend v2/all
       }
