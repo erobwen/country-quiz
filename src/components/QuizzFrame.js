@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Column } from "./layout";
 
 
-export const QuizzFrame = ({children, icon}) => {
+export const QuizzFrame = ({style, children, icon}) => {
 
     const frameStyle = {
         position: "relative",
@@ -10,7 +10,7 @@ export const QuizzFrame = ({children, icon}) => {
     } 
 
     return (
-        <Column style={frameStyle}>
+        <Column style={{...frameStyle, ...style}}>
             <QuizzHeader/>
             {children}
             {icon && <QuizzIcon/>}

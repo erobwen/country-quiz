@@ -1,6 +1,4 @@
-
-import { ClickablePanel } from "./ClickablePanel";
-import { Column, Row } from "./layout";
+import { Column, Filler, Row } from "./layout";
 
 export const Query = ({query, answerQuery, answerIfAny, advanceToNext}) => {
     return (
@@ -10,10 +8,11 @@ export const Query = ({query, answerQuery, answerIfAny, advanceToNext}) => {
                 query={query} 
                 answerQuery={answerQuery} 
                 answerIfAny={answerIfAny}/>
-            {!!answerIfAny && 
-                <Row right>
-                    <YellowButton onClick={advanceToNext} text={"Next"}/>
-                </Row>}
+            <Row style={{maxHeight: !!answerIfAny ? "76px" : "0px", transition: "all .5s" }} right>
+                <YellowButton 
+                    style={{transform: !!answerIfAny ? "scale(1)" : "scale(0)", opacity: !!answerIfAny ? 1 : 0, transition: "all .5s" }} 
+                    onClick={advanceToNext} text={"Next"}/>
+            </Row>
         </Column>
     )
 }
@@ -22,12 +21,15 @@ export const QueryQuestion = ({query}) => {
     switch (query.typeOfQuestion) {
         case "capital": 
             return (
-                <h2 style={queryTextStyle}>{query.correctAnswer.capital[0]} is the capital of</h2>
+                <h2 style={{...queryTextStyle, marginTop: "78px"}}>{query.correctAnswer.capital[0]} is the capital of</h2>
             );        
         case "flag":
             return (
                 <>
-                    <img style={flagStyle} src={query.correctAnswer.flags.png}></img>
+                    <Row>
+                        <img style={flagStyle} src={query.correctAnswer.flags.png}></img>
+                        <Filler/>
+                    </Row>
                     <h2 style={queryTextStyle}>This is the flag of country</h2>
                 </>
             );        
@@ -35,7 +37,7 @@ export const QueryQuestion = ({query}) => {
 }
 
 const flagStyle = {
-    width: "100px",
+    height: "58px",
     boxShadow: "1px 1px 4px 2px rgba(0, 0, 0, 0.1)"
 }
 
@@ -122,12 +124,14 @@ const alternativeStyle = {
 
     ...buttonText,
     color: "rgba(96, 102, 208, 0.8)",
+
+    transition: "all .3s"
 }
 
 
-export const YellowButton = ({onClick, text}) => {
+export const YellowButton = ({onClick, text, style}) => {
     return (
-        <div className={"yellow-button"} style={yellowButtonStyle} onClick={onClick}>
+        <div className={"yellow-button"} style={{...yellowButtonStyle, ...style}} onClick={onClick}>
             <Row center>
                 <div style={{marginRight: "36px", marginLeft: "36px"}}>{ text }</div>
             </Row>

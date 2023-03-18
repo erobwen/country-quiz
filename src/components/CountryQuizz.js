@@ -6,9 +6,9 @@ export const CountryQuizz = () => {
     return (
       <QuizzBackground>
         <Column style={fillStyle}>
-            <CenterMiddle style={flexGrowShrinkStyle}>
-                <QuizzForm/>
-            </CenterMiddle>
+            <Center style={flexGrowShrinkStyle}>
+                <QuizzForm style={{marginTop: "80px"}}/>
+            </Center>
             <Footer style={flexAutoHeightStyle}/>
         </Column>
       </QuizzBackground>

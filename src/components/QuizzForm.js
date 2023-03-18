@@ -7,7 +7,7 @@ import { Query } from "./Query";
 import { QuizzFrame } from "./QuizzFrame";
 import { QuizzResults } from "./QuizzResult";
 
-export const QuizzForm = ({}) => {
+export const QuizzForm = ({style}) => {
     const data = useFetch("/countries");
     const text = JSON.stringify(data);
     const [state, setState] = useState({
@@ -41,7 +41,7 @@ export const QuizzForm = ({}) => {
     const done = state.currentQueryIndex >= state.queries.length; 
     
     return (
-        <QuizzFrame icon={!done}>
+        <QuizzFrame style={style} icon={!done}>
             { done ? 
                 <QuizzResults correctAnswers={state.correctAnswers}/> 
                 :
