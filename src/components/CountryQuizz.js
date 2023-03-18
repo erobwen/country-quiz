@@ -1,13 +1,16 @@
-import { CenterMiddle } from '@/components/layout'
+import { Center, CenterMiddle, Column } from '@/components/layout'
 import { QuizzForm } from '@/components/QuizzForm'
-import { fillStyle } from '@/styles/styles'
+import { fillStyle, flexAutoHeightStyle, flexGrowShrinkStyle } from '@/styles/styles'
 
 export const CountryQuizz = () => {
     return (
       <QuizzBackground>
-        <CenterMiddle>
-          <QuizzForm/>
-        </CenterMiddle>
+        <Column style={fillStyle}>
+            <CenterMiddle style={flexGrowShrinkStyle}>
+                <QuizzForm/>
+            </CenterMiddle>
+            <Footer style={flexAutoHeightStyle}/>
+        </Column>
       </QuizzBackground>
     );
 }
@@ -24,3 +27,12 @@ export const QuizzBackground = ({children}) => {
     );
 }
   
+const Footer = () => {
+    return (
+        <Center>
+            <footer style={{fontFamily: "Arial, sans-serif", color: "white", fontWeight: "500"}}>
+                Author: Robert Renbris
+            </footer>
+        </Center>
+    );
+}

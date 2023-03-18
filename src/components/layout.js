@@ -4,12 +4,12 @@ export const Column = ({style, children}) => (
   <div id={"Column"} style={{...columnStyle, ...style}} children={children}/>
 );
 
-export function Row({style, children, left=false, right=false, center=false}) {
+export function Row({style, children, className="", left=false, right=false, center=false}) {
   style={...style};
   if (right) style.justifyContent = "flex-end";
   if (left) style.justifyContent = "flex-start";
   if (center) style.justifyContent = "space-around";
-  return <div id="Row" style={{...rowStyle, ...style}} children={children}/>;
+  return <div id="Row" className={className} style={{...rowStyle, ...style}} children={children}/>;
 }
 
 export function Middle({style, children}) {

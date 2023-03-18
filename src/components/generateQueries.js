@@ -5,14 +5,14 @@ export function generateQueries(countries) {
 
     while (queries.length < 4) {
         const countriesBag = [...countries];
-        const theOne = removeOneRandom(countriesBag);
-        const alternatives = [theOne];
+        const correctAnswer = removeOneRandom(countriesBag);
+        const alternatives = [correctAnswer];
         while (alternatives.length < 4) {
             alternatives.push(removeOneRandom(countriesBag));
         }
 
         queries.push({
-            answer: theOne, 
+            correctAnswer, 
             alternatives: randomized(alternatives), 
             typeOfQuestion: (Math.random() >= 0.5) ? "flag" : "capital"
         })

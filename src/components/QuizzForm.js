@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { generateQueries } from "./generateQueries";
 import { Column } from "./layout";
-import { Quizz } from "./Quizz";
+import { Query } from "./Query";
 import { QuizzFrame } from "./QuizzFrame";
 import { QuizzResults } from "./QuizzResult";
 
@@ -12,10 +12,8 @@ export const QuizzForm = ({}) => {
     const text = JSON.stringify(data);
     const [state, setState] = useState({
         queries: [],
-        currentQueryIndex: 0,
-        answeredCurrentQuery: false,
-        currentAnswerCorrect: null,
-        correctAnswers: 0
+        answers: [],
+        currentQueryIndex: 0
     })
     useEffect(() => {
         if (data) {
@@ -25,35 +23,33 @@ export const QuizzForm = ({}) => {
 
     if (state.queries.length === 0) return null;
 
-    console.log(state.queries);
 
     function advanceToNext(succeed) {
         setState({
             ...state, 
-            currentQueryIndex: state.currentQueryIndex + 1,
-            currentAnswerCorrect: null
+            currentQueryIndex: state.currentQueryIndex + 1
         });
     }
     
     function answerQuery(answer) {
-        currentQuery = state.queries[state.currentQueryIndex];
-        const correctAnswer = answer === currentQuery.answer;
         setState({
             ...state,
-            answeredCurrentQuery: true, 
-            correctAnswers: state.correctAnswers + correctAnswer ? 1 : 0,
-            currentQueryCorrect: correctAnswer
+            answers: [...state.answers, answer] 
         });
     }
 
-    const done = false; //state.currentQueryIndex >= state.queries.length; 
+    const done = state.currentQueryIndex >= state.queries.length; 
     
     return (
         <QuizzFrame icon={!done}>
             { done ? 
                 <QuizzResults correctAnswers={state.correctAnswers}/> 
                 :
-                <Quizz query={state.queries[state.currentQueryIndex]}/> 
+                <Query 
+                    query={state.queries[state.currentQueryIndex]} 
+                    answerQuery={answerQuery} 
+                    answerIfAny={state.currentQueryIndex < state.answers.length ? state.answers[state.currentQueryIndex] : null}
+                    advanceToNext={advanceToNext}/> 
             }
         </QuizzFrame>
     );

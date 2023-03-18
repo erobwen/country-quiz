@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
+.yellow-on-hover:hover {
+  background-color: #F9A826
+}
 
 :root {
 
