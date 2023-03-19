@@ -2,10 +2,27 @@
 
 export function generateQueries(countries) {
     const queries = [];
+    const uniqueQueries = {};
+    countries = countries.filter(country => country.capital && country.capital[0] && country.flags && country.flags.png); // Make sure they have what we need. 
+
+    function randomQuery() {
+        const country = getOneRandom(countries);
+        const typeOfQuestion = getOneRandom(["flag", "capital"]);    
+        return [country, typeOfQuestion]
+    }
 
     while (queries.length < 4) {
+        // Create a unique (country, typeOfQuery) pair. 
+        let [country, typeOfQuestion] = randomQuery();
+        while(uniqueQueries[country.name.common + ":" + typeOfQuestion]) {
+            [country, typeOfQuestion] = randomQuery();
+        }
+        uniqueQueries[country.name.common + ":" + typeOfQuestion] = true; 
+        const correctAnswer = country;
+
+        // Create alternatives
         const countriesBag = [...countries];
-        const correctAnswer = removeOneRandom(countriesBag);
+        removeItem(countriesBag, country);
         const alternatives = [correctAnswer];
         while (alternatives.length < 4) {
             alternatives.push(removeOneRandom(countriesBag));
@@ -14,7 +31,7 @@ export function generateQueries(countries) {
         queries.push({
             correctAnswer, 
             alternatives: randomized(alternatives), 
-            typeOfQuestion: (Math.random() >= 0.5) ? "flag" : "capital"
+            typeOfQuestion
         })
     }
 
@@ -26,11 +43,19 @@ export function generateQueries(countries) {
 /**
  * Random stuff
  */
+function removeItem(array, value) {
+    var index = array.indexOf(value);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+    return array;
+}
 
-// function getOneRandom(list) {
-//     const index = Math.floor(Math.random()*(list.length))
-//     return list[index]; 
-// }
+
+function getOneRandom(list) {
+    const index = Math.floor(Math.random()*(list.length))
+    return list[index]; 
+}
   
 function removeOneRandom(list) {
     const index = Math.floor(Math.random()*(list.length))

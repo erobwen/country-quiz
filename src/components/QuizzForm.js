@@ -2,7 +2,7 @@ import useFetch from "@/pages/api/useFetch";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { generateQueries } from "./generateQueries";
-import { Column } from "./layout";
+import { Column } from "./BasicLayout";
 import { Query } from "./Query";
 import { QuizzFrame } from "./QuizzFrame";
 import { QuizzResults } from "./QuizzResult";
@@ -38,12 +38,20 @@ export const QuizzForm = ({style}) => {
         });
     }
 
+    function startOver() {
+        setState({
+            ...state,
+            queries: generateQueries(data),
+            answers: [],
+            currentQueryIndex: 0 
+        });
+    }
+
     const done = state.currentQueryIndex >= state.queries.length; 
-    
     return (
         <QuizzFrame style={style} icon={!done}>
             { done ? 
-                <QuizzResults correctAnswers={state.correctAnswers}/> 
+                <QuizzResults state={state} startOver={startOver}/> 
                 :
                 <Query 
                     query={state.queries[state.currentQueryIndex]} 

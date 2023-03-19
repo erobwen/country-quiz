@@ -1,5 +1,7 @@
+import { flexAutoHeightStyle } from "@/styles/styles";
 import Image from "next/image";
-import { Column } from "./layout";
+import { Center, Column } from "./BasicLayout";
+import { fontSize, fontWeight, lineHeight } from "./Typography";
 
 
 export const QuizzFrame = ({style, children, icon}) => {
@@ -7,6 +9,7 @@ export const QuizzFrame = ({style, children, icon}) => {
     const frameStyle = {
         position: "relative",
         width: "464px",
+        height: "700px"
     } 
 
     return (
@@ -40,14 +43,17 @@ export const QuizzIcon = ({}) => {
     )
 }
 
-
 export const QuizzHeader = ({}) => {
     return <h1 style={titleStyle}>COUNTRY QUIZZ</h1>
 }
 
 const titleStyle = {
     fontFamily: "Poppins",
-    fontWeight: "700",
-    fontSize: "36px",
-    lineHeight: "54px"
+    fontWeight: fontWeight.bold,
+    fontSize: fontSize.large,
+    lineHeight: lineHeight.large
 }
+
+
+
+

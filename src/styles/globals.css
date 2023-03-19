@@ -1,8 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-.yellow-on-hover:hover {
-  background-color: #F9A826
+.yellow-background-on-hover:hover {
+  background-color: #F9A826;
+  transition: all 0.5s;
 }
+
+.blue-background-on-hover:hover {
+  background-color: #1D355D;
+  transition: all 0.5s;
+}
+
+.white-on-hover:hover {
+  color: white;
+  transition: all 0.5s;
+}
+
+.white-background-blue-color {
+  background-color: white;
+  color:#1D355D;
+  transition: all 0.5s;
+}    
+
 
 :root {
 

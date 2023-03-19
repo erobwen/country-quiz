@@ -1,4 +1,7 @@
-import { Column, Filler, Row } from "./layout";
+import { CenterMiddle, Column, Filler, Row } from "./BasicLayout";
+import { fontFamily, fontSize, fontWeight } from "./Typography";
+import { RxCrossCircled, RxCheckCircled } from "react-icons/rx";
+import { buttonShape, YellowButton } from "./Button";
 
 export const Query = ({query, answerQuery, answerIfAny, advanceToNext}) => {
     return (
@@ -26,7 +29,7 @@ export const QueryQuestion = ({query}) => {
         case "flag":
             return (
                 <>
-                    <Row>
+                    <Row overflowVisible>
                         <img style={flagStyle} src={query.correctAnswer.flags.png}></img>
                         <Filler/>
                     </Row>
@@ -38,10 +41,10 @@ export const QueryQuestion = ({query}) => {
 
 const flagStyle = {
     height: "58px",
-    boxShadow: "1px 1px 4px 2px rgba(0, 0, 0, 0.1)"
+    boxShadow: "1px 1px 4px 2px rgba(0, 0, 0, 0.3)"
 }
 
-const queryFrameStyle = {
+export const queryFrameStyle = {
     paddingTop: "50px",
     paddingLeft: "20px",
     paddingRight: "20px",
@@ -53,12 +56,12 @@ const queryFrameStyle = {
 }
 
 const queryTextStyle = {
-    marginTop: "20px",
     fontFamily: "Poppins",
-    color: "#2F527B",
     fontWeight: "700",
     fontSize: "24px",
-    lineHeight: "36px",
+    marginTop: "20px",
+    color: "#2F527B",
+    lineHeight: fontSize.large,
 }
 
 export const QueryAnswers = ({query, answerQuery, answerIfAny}) => {
@@ -90,60 +93,49 @@ export const Alternative = ({alternative, index, onClick, showAnswers, showRight
     if (onClick) style.cursor = "pointer";
 
     return (
-        <div className={!showAnswers ? "yellow-on-hover" : ""} style={{...alternativeStyle, ...style}} onClick={onClick}>
-            <Row>
+        <button className={!showAnswers ? "yellow-background-on-hover" : ""} style={{...alternativeStyle, ...style}} onClick={onClick}>
+            <Row className={!showAnswers ? "white-on-hover" : ""} >
                 <div style={{marginRight: "47px", marginLeft: "19px"}}>{ letters[index] }</div>
                 { alternative.name.common}
+                { showWrongAnswer &&
+                    <>
+                        <Filler/>
+                        <CenterMiddle style={{width: "50px", height: "50px", fontSize: "30px"}}>
+                            <RxCrossCircled/>
+                        </CenterMiddle>                    
+                    </> 
+                }
+                { showRightAnswer &&
+                    <>
+                        <Filler/>
+                        <CenterMiddle style={{width: "50px", height: "50px", fontSize: "30px"}}>
+                            <RxCheckCircled/>
+                        </CenterMiddle>                    
+                    </> 
+                }
             </Row>
-        </div>
+        </button>
     );
 }
 
-const buttonShape = {
-    borderRadius: "12px",
-    borderStyle: "solid",
-    borderWidth: "0px",
-    overflow: "hidden",
-    height: "56px",
-}
-
-const buttonText = {
-    fontFamily: "Poppins",
-    fontWeight: "500",
-    fontSize: "18px",
-    lineHeight: "56px",
-    userSelect: "none"
+const alternativeText = {
+    userSelect: "none",
+    fontFamily: fontFamily,
+    fontWeight: fontWeight.normal,
+    fontSize: fontSize.small,
+    lineHeight: "50px",
 }
 
 const alternativeStyle = {
     marginTop: "20px",
-
+    
     ...buttonShape,
     borderColor: "rgba(96, 102, 208, 0.7)",
     borderWidth: "3px",
 
-    ...buttonText,
+    ...alternativeText,
+
     color: "rgba(96, 102, 208, 0.8)",
 
     transition: "all .3s"
-}
-
-
-export const YellowButton = ({onClick, text, style}) => {
-    return (
-        <div className={"yellow-button"} style={{...yellowButtonStyle, ...style}} onClick={onClick}>
-            <Row center>
-                <div style={{marginRight: "36px", marginLeft: "36px"}}>{ text }</div>
-            </Row>
-        </div>
-    );
-}
-
-const yellowButtonStyle = {
-    marginTop: "20px",
-    ...buttonShape,
-    ...buttonText,
-    backgroundColor: "#F9A826",
-    color: "white",
-    cursor: "pointer"
 }
