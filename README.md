@@ -37,7 +37,9 @@
 
 ![Alt text](/documents/screenshot.png?raw=true "Screenshot")
 
-Click the link above to see the demo. This project is built with React/Next.js with plain Javascript (no Typescript). It is built with my signature style with using a lot of inline styles that are composed programmatically. It was the first time I tried out Next.js, and it worked out fine. 
+Click the link above to see the demo. This project is built with React/Next.js with plain Javascript (no Typescript). It was the first time I tried out Next.js, and it worked out fine. Next.js features server side rendering for fast performance. 
+
+It is built with my signature style with using a lot of inline styles that are composed programmatically.  
 
 
 ### Built With
