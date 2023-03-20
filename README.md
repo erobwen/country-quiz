@@ -24,16 +24,25 @@
 
 <!-- TABLE OF CONTENTS -->
 
+
+
 ## Table of Contents
 
-- [Built With](#built-with)
+- [Overview](#overview)
+  - [Built With](#built-with)
 - [Features](#features)
 - [How to use](#how-to-use)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
+## Overview
 
-## Built With
+![Alt text](/documents/screenshot.png?raw=true "Screenshot")
+
+Click the link above to see the demo. This project is built with React/Next.js with plain Javascript (no Typescript). It is built with my signature style with using a lot of inline styles that are composed programmatically. It was the first time I tried out Next.js, and it worked out fine. 
+
+
+### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 I used Next.js (React) to build this app.
@@ -76,10 +85,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Contact
 
-- Website [your-website.com](https://{your-web-site-link})
-- GitHub [@your-username](https://{github.com/your-usermame})
-- Twitter [@your-twitter](https://{twitter.com/your-username})
-
+- GitHub [@your-username](https://github.com/erobwen)
 
 
 
