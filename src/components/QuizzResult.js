@@ -16,13 +16,14 @@ function calculateScore(state) {
 
 export const QuizzResults = ({state, startOver}) => {
     const score = calculateScore(state);
-    const everythingRight = score === state.queries.length; 
+    // const everythingRight = score === state.queries.length; 
+    const somethingRight = score > 0;
 
     return (
         <Column style={queryFrameStyle}>
             <Center style={{marginBottom: "40px"}}>
                 <Image 
-                    src={everythingRight ? "/winners.svg" : "/adventure.svg" }
+                    src={somethingRight ? "/winners.svg" : "/adventure.svg" }
                     alt="Score"
                     width={162}
                     height={116}
