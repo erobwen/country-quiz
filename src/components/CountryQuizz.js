@@ -1,12 +1,12 @@
 import { Center, CenterMiddle, Column } from '@/components/BasicLayout'
 import { QuizzForm } from '@/components/QuizzForm'
-import { fillStyle, flexAutoHeightStyle, flexGrowShrinkStyle } from '@/styles/styles'
+import { fillStyle, flexAutoHeightStyle, flexAutoStyle, flexGrowShrinkStyle } from '@/styles/styles'
 
 export const CountryQuizz = () => {
     return (
       <QuizzBackground>
         <Column style={{...fillStyle, overflowY: "overlay"}}>
-            <Center style={flexGrowShrinkStyle}>
+            <Center style={flexAutoStyle}>
                 <QuizzForm style={{marginTop: "40px"}}/>
             </Center>
         </Column>
